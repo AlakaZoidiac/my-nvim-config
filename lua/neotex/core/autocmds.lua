@@ -13,3 +13,22 @@ api.nvim_create_autocmd(
     end,
   }
 )
+
+-- Open matching PDF in Sioyek silently (no cmd popup)
+local function open_sioyek_after_compile()
+  local pdf_file = vim.fn.expand('%:r') .. '.pdf'
+  if vim.fn.filereadable(pdf_file) == 0 then
+    return
+  end
+  local path = vim.fn.expand("~\\scoop\\apps\\sioyek\\2.0.0\\sioyek.exe")
+  local exe = '"' .. path .. '"'
+  local cmd = 'cmd /c start /b "" ' .. exe .. ' ' .. vim.fn.shellescape(pdf_file)
+  os.execute(cmd)
+end
+
+api.nvim_create_autocmd("User", {
+  pattern = "VimtexEventCompileSuccess",
+  callback = open_sioyek_after_compile,
+})
+
+

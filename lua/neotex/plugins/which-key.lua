@@ -236,7 +236,7 @@ return {
       k = { "<cmd>on<CR>", "max split" },
       q = { "<cmd>wa! | qa!<CR>", "quit" },
       u = { "<cmd>Telescope undo<CR>", "undo" },
-      v = { "<cmd>VimtexView<CR>", "view" },
+      v = { "<cmd>SilentVimtexView<CR>", "view" },
       w = { "<cmd>wa!<CR>", "write" },
       -- z = { "<cmd>ZenMode<CR>", "zen" },
       a = {

@@ -16,6 +16,31 @@ vim.api.nvim_create_user_command('ReloadConfig', function()
   vim.notify('Nvim configuration reloaded!', vim.log.levels.INFO)
 end, {})
 
+vim.api.nvim_create_user_command("SilentVimtexView", function()
+  local tex_file = vim.fn.expand('%:p')                 -- full path to .tex
+  local pdf_file = vim.fn.expand('%:r') .. '.pdf'       -- matching PDF
+  local line = vim.fn.line('.')                         -- current line for forward search
+
+  if vim.fn.filereadable(pdf_file) == 0 then
+    vim.notify("PDF not found!", vim.log.levels.WARN)
+    return
+  end
+
+  local path = vim.fn.expand("~\\scoop\\apps\\sioyek\\2.0.0\\sioyek.exe")
+  local exe = '"' .. path .. '"'
+
+  local cmd = string.format(
+    'cmd /c start /b "" %s "%s" --forward-search-file "%s" --forward-search-line %d',
+    exe,
+    pdf_file,
+    tex_file,
+    line
+  )
+
+  os.execute(cmd)
+end, {})
+
+
 -- Go to next/previous most recent buffer, excluding buffers where winfixbuf = true
 function GotoBuffer(count, direction)
   -- Check if a buffer is in a fixed window

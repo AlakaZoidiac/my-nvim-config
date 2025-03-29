@@ -3,8 +3,10 @@ return {
   init = function()
     -- Viewer settings
     vim.g.vimtex_view_method = 'sioyek'
-    vim.g.vimtex_view_sioyek_exe = 'sioyek.exe'
+    vim.g.vimtex_view_sioyek_exe ='sioyek.exe'
     vim.g.vimtex_callback_progpath = 'nvim'
+    vim.g.vimtex_view_automatic = 0
+    -- vim.g.vimtex_log_verbose = 1
     -- vim.g.vimtex_view_method = 'zathura_simple'    -- For Wayland compatibility, avoid xdotool
     -- vim.g.vimtex_context_pdf_viewer = 'okular'     -- External PDF viewer for the Vimtex menu
 
