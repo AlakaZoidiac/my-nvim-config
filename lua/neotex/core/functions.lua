@@ -1,3 +1,5 @@
+local M = {}
+
 -- Fine all instances of a word in a project with telescope
 function SearchWordUnderCursor()
   local word = vim.fn.expand('<cword>')
@@ -108,3 +110,29 @@ function GotoBuffer(count, direction)
   vim.cmd('buffer ' .. target_buffers[target_index].bufnr)
 end
 
+
+-- Inverse Search Fix
+function M.launch_sioyek()
+  local tex_file = vim.fn.expand('%:p')
+  local pdf_file = vim.fn.expand('%:r') .. '.pdf'
+  local line = vim.fn.line('.')
+  local sioyek = vim.fn.expand("~\\scoop\\apps\\sioyek\\2.0.0\\sioyek.exe")
+
+  local inverse_cmd = [[nvim --headless -c "VimtexInverseSearch %2 '%1'"]]
+
+  local args = {
+    "--inverse-search", inverse_cmd,
+    "--forward-search-file", tex_file,
+    "--forward-search-line", tostring(line),
+    pdf_file,
+  }
+
+  local full_cmd = { sioyek }
+  for _, arg in ipairs(args) do
+    table.insert(full_cmd, arg)
+  end
+
+  vim.fn.jobstart(full_cmd, { detach = true })
+end
+
+return M

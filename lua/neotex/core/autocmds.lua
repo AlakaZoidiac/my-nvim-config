@@ -31,4 +31,10 @@ api.nvim_create_autocmd("User", {
   callback = open_sioyek_after_compile,
 })
 
-
+-- Inverse Search Fix
+api.nvim_create_autocmd("User", {
+  pattern = "VimtexEventCompileSuccess",
+  callback = function()
+    require("neotex.core.functions").launch_sioyek()
+  end,
+})
