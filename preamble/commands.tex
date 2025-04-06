@@ -1,0 +1,58 @@
+% commands.tex
+
+% Fbox padding
+\renewcommand{\fboxsep}{4pt}
+
+% Row operation arrow
+\newcommand\rowop[1]{\scriptstyle\smash{\xrightarrow[\vphantom{#1}]{\mkern-4mu#1\mkern-4mu}}}
+
+% Convert list of row operations to matrix
+\DeclareDocumentCommand\converttorows{>{\SplitList{,}}m}
+  {\ProcessList{#1}{\converttorow}}
+
+\NewDocumentCommand{\converttorow}{m}
+  {\ifthenelse{\isempty{#1}}{}{\rowop{#1}}\\}
+
+\DeclareDocumentCommand \rowops{m}
+{
+  \;
+  \begin{matrix}
+    \converttorows{#1}
+  \end{matrix}
+  \;
+}
+
+% Augmented matrix tweak (removes left indent)
+\makeatletter
+\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
+  \hskip -\arraycolsep
+  \let\@ifnextchar\new@ifnextchar
+  \array{#1}}
+\makeatother
+
+% Subscripted bmatrix
+\newenvironment{sbmatrix}[1]
+  {\def\mysubscript{#1}\mathop\bgroup\begin{bmatrix}}
+  {\end{bmatrix}\egroup_{\textstyle\mathstrut\mysubscript}}
+
+% Define subitem counter
+\newcounter{subitemcounter}
+
+% Save the original \item command
+\let\originalitem\item
+
+% Patch \item to reset subitem counter (but only if not called by \subitem)
+\renewcommand{\item}{%
+  \ifboolexpr{ not test {\ifcsdef{subitemactive}} }%
+    {\setcounter{subitemcounter}{0}}%
+    {}%
+  \originalitem
+}
+
+% Define \subitem (preserves subitem counter)
+\renewcommand{\subitem}{%
+  \csdef{subitemactive}{}% Mark that we're in a subitem
+  \stepcounter{subitemcounter}%
+  \originalitem[\textnormal{(\alph{subitemcounter})}]%
+  \csundef{subitemactive}% Unmark
+}
