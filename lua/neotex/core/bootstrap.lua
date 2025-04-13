@@ -13,19 +13,19 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- vim.cmd [[
---   augroup Transparency
---     autocmd!
---     autocmd VimEnter * hi Normal guibg=NONE ctermbg=NONE
---     autocmd VimEnter * hi NormalNC guibg=NONE ctermbg=NONE
---     autocmd VimEnter * hi VertSplit guibg=NONE ctermbg=NONE
---     autocmd VimEnter * hi StatusLine guibg=NONE ctermbg=NONE
---     autocmd VimEnter * hi StatusLineNC guibg=NONE ctermbg=NONE
---     autocmd VimEnter * hi TabLine guibg=NONE ctermbg=NONE
---     autocmd VimEnter * hi TabLineFill guibg=NONE ctermbg=NONE
---     autocmd VimEnter * hi TabLineSel guibg=NONE ctermbg=NONE
---   augroup END
--- ]]
+vim.cmd [[
+  augroup Transparency
+    autocmd!
+    autocmd VimEnter * hi Normal guibg=NONE ctermbg=NONE
+    autocmd VimEnter * hi NormalNC guibg=NONE ctermbg=NONE
+    autocmd VimEnter * hi VertSplit guibg=NONE ctermbg=NONE
+    autocmd VimEnter * hi StatusLine guibg=NONE ctermbg=NONE
+    autocmd VimEnter * hi StatusLineNC guibg=NONE ctermbg=NONE
+    autocmd VimEnter * hi TabLine guibg=NONE ctermbg=NONE
+    autocmd VimEnter * hi TabLineFill guibg=NONE ctermbg=NONE
+    autocmd VimEnter * hi TabLineSel guibg=NONE ctermbg=NONE
+  augroup END
+]]
 
 vim.cmd[[
 " Use Tab to expand and jump through snippets

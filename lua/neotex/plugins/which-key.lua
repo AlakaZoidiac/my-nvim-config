@@ -396,6 +396,14 @@ return {
           "<cmd>read ~/AppData/Local/nvim/templates/Assignment.tex<CR>",
           "Assignment.tex",
         },
+        l = {
+          "<cmd>read ~/AppData/Local/nvim/templates/Lecture.tex<CR>",
+          "Lecture.tex",
+        },
+        n = {
+          "<cmd>read ~/AppData/Local/nvim/templates/LectureNotes.tex<CR>",
+          "LectureNotes.tex",
+        },
       },
     },
   },
