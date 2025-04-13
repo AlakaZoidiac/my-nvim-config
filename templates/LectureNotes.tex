@@ -1,0 +1,36 @@
+\documentclass[letterpaper, 12pt]{article}
+\input{~/AppData/Local/nvim/preamble/packages}
+\input{~/AppData/Local/nvim/preamble/commands}
+\input{~/AppData/Local/nvim/preamble/theorems}
+\input{~/AppData/Local/nvim/preamble/layout-lectures}
+
+% Fancy headers
+\pagestyle{fancy}
+\fancyhead[R]{\small\textit{\nouppercase{\rightmark}}}
+\fancyhead[L]{\textcolor{RoyalBlue}{\hyperref[sec:contents]{\small Short title of document}}}
+\renewcommand{\sectionmark}[1]{\markright{#1}}
+\renewcommand{\footrulewidth}{0pt}
+\renewcommand{\headrulewidth}{0pt}
+\setlength{\headheight}{15pt}
+%
+
+
+% --- Document starts ---
+\begin{document}
+
+\title{Title here \\[1em] \normalsize Subtitle here}
+\author{\normalsize Your name here}
+\date{\normalsize\vspace{-1ex} Last updated: \today}
+
+\maketitle
+\tableofcontents
+\label{sec:contents}
+
+% --- Pull in lecture files ---
+
+% --- Lecture 1 ---
+
+\input{}
+
+% --- Document ends ---
+\end{document}

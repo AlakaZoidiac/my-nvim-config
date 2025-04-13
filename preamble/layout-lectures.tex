@@ -1,0 +1,30 @@
+% layout-lectures.tex
+
+% Page layout
+\usepackage[left=1.35in, right=1.35in, top=1in, bottom=.9in, headsep=.2in, footskip=0.35in]{geometry}
+\renewcommand{\baselinestretch}{1.2}
+\setlength{\parskip}{1.3mm}
+\allowdisplaybreaks
+
+% Section titles
+\usepackage{titlesec}
+\titleformat{\section}{\large\bfseries}{{\fontsize{19}{19}\selectfont\textreferencemark}\;\; }{0em}{}
+\titleformat{\subsection}{\normalsize\bfseries\selectfont}{\thesubsection\;\;\;}{0em}{}
+
+% TOC formatting
+\setlength{\cftbeforesecskip}{.9ex}
+\cftsetindents{section}{0em}{0em}
+\renewcommand{\cfttoctitlefont}{\large\bfseries}
+\makeatletter
+\renewcommand{\cftsecpresnum}{\begin{lrbox}{\@tempboxa}}
+\renewcommand{\cftsecaftersnum}{\end{lrbox}}
+\makeatother
+
+% Link colors
+\hypersetup{
+  colorlinks=true,
+  linkcolor=RoyalBlue,
+  citecolor=RedOrange,
+  urlcolor=ForestGreen
+}
+
