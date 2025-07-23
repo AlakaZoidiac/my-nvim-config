@@ -163,22 +163,24 @@ frametitleaboveskip=\dimexpr-\ht\strutbox-0.5ex\relax}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Proof
-\newenvironment{prf}{%
-\begin{mdframed}[
-  linecolor=black,
-  linewidth=1pt,
-  leftline=true,
-  topline=false,
-  bottomline=false,
-  rightline=false,
-  backgroundcolor=white,
-  innertopmargin=6pt,
-  innerbottommargin=6pt,
-  innerleftmargin=10pt,
-  innerrightmargin=10pt
-]
-\begin{proof}[\textbf{Proof}]
+\newenvironment{lined}{%
+  \begin{mdframed}[%
+    linecolor=black,
+    linewidth=1pt,
+    leftline=true,
+    rightline=false,
+    topline=false,
+    bottomline=false,
+    backgroundcolor=white,
+    innertopmargin=6pt,
+    innerbottommargin=6pt,
+    innerleftmargin=10pt,
+    innerrightmargin=10pt
+  ]%
 }{%
-\end{proof}
-\end{mdframed}
+  \end{mdframed}
 }
+
+\NewDocumentEnvironment{prf}{}
+  {\begin{lined}\begin{proof}[\textbf{Proof}]}
+  {\end{proof}\end{lined}}
